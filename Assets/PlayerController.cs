@@ -34,17 +34,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        else if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit, 100))
             {
-                Debug.Log("We hit " + hit.collider.name + " " + hit.point);
-                // Focus our player to what we hit
-                
-                // Stop focusing any objects
+                // Did we hit an interactable object?
+                    // Then focus on it!
             }
         }
 
