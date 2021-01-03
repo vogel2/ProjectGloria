@@ -21,12 +21,12 @@ public class CameraController : MonoBehaviour
     {
         currentZoom = currentZoom - Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
-        currentYaw = currentYaw + Input.GetAxis("Horizontal") * yawSpeed;
+        currentYaw = currentYaw - Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
     }
     void LateUpdate()
     {
         transform.position = target.position - offset * currentZoom;
-        transform.RotateAround(target.position, currentYaw);
+        transform.RotateAround(target.position, Vector3.up, currentYaw);
         transform.LookAt(target.position + Vector3.up * pitch);
     }
 
